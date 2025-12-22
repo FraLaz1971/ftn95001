@@ -1,0 +1,4 @@
+show warranty
+.1: error: SHOW: Syntax error at `;': Bad character `;' in input.
+;
+exit
