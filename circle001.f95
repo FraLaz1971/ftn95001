@@ -183,12 +183,3 @@ REAL FUNCTION det(m,ncols,nrows)
   &     m(2,1)*m(1,2)*m(3,3) - &
   &     m(1,1)*m(3,2)*m(2,3)
 END
-!double detA3x3(Array3x3 *a3x3){
-!        dres = a3x3->d_1 * a3x3->e_2 * a3x3->f_3 + \
-!               a3x3->e_1 * a3x3->f_2 * a3x3->d_3 + \
-!               a3x3->f_1 * a3x3->d_2 * a3x3->e_3 - \
-!               a3x3->f_1 * a3x3->e_2 * a3x3->d_3 - \
-!               a3x3->e_1 * a3x3->d_2 * a3x3->f_3 - \
-!               a3x3->d_1 * a3x3->f_2 * a3x3->e_3;
-!               return dres;
-!}
