@@ -11,7 +11,7 @@ FDFLAGS=-L$(ROOT)/usr/lib -L$(PGPLOT_DIR) -Wl,-rpath=$(PGPLOT_DIR)
 LIBS=-lpgplot -lpng -lz -lX11
 SRCS=
 OBJS = $(SRCS:.f=$(OEXT))
-TARGETS = $(OBJS:$(OEXT)=$(EEXT)) circle001$(EEXT)
+TARGETS = $(OBJS:$(OEXT)=$(EEXT)) circle001$(EEXT) atoms$(EEXT)
 .PHONY: all clean
 
 all: $(OBJS) $(TARGETS)
@@ -25,6 +25,11 @@ all: $(OBJS) $(TARGETS)
 circle001$(EEXT): circle001.f95
 	$(F95) $< -o $@
 
+atoms.o: atoms.f95
+	$(F95) -c $<
+atoms$(EEXE): atoms.o random.o
+	$(F95) $^ -o $@
+
 clean:
-	$(RM) $(OBJS) $(TARGETS) circle001$(EEXT) fort.*
+	$(RM) *.o $(OBJS) $(TARGETS) circle001$(EEXT) fort.*
 
