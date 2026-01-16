@@ -1,0 +1,13 @@
+      SUBROUTINE INI_RAN
+  	    CALL DATE_TIME_SEED@()
+        RETURN
+      END
+C
+      REAL FUNCTION GETRAN(L)
+        IMPLICIT NONE
+	    REAL L
+	    DOUBLE PRECISION R,RANDOM
+	    R = RANDOM()
+	    GETRAN=R*L-L/2.0
+        RETURN
+      END

@@ -1,0 +1,40 @@
+FC=ftn77
+FD=slink
+F95=ftn95
+OEXT=.obj
+EEXT=.exe
+RM=del /Q /F
+ROOT=
+FFLAGS=
+ROOT=
+#FDFLAGS=-L$(ROOT)/usr/lib -L$(PGPLOT_DIR) -Wl,-rpath=$(PGPLOT_DIR)
+#LIBS=-lpgplot -lpng -lz -lX11
+FDFLAGS=
+LIBS=
+SRCS=
+OBJS = $(SRCS:.f=$(OEXT))
+TARGETS = $(OBJS:$(OEXT)=$(EEXT)) circle001$(EEXT) atoms$(EEXT)
+.PHONY: all clean
+
+all: $(OBJS) $(TARGETS)
+
+.f.obj:
+	$(FC) $<
+
+.obj:.exe
+	$(FD) -OUT:$@ $^ $(LIBS) $(FDFLAGS)
+
+circle001$(EEXT): circle001.f95
+	$(F95) /LINK $<
+atoms.obj: atoms.f95
+	$(F95) $<
+randoms.obj: randoms.f
+	$(FC) $<
+systems.obj: systems.f
+	$(FC) $<
+atoms$(EEXT): atoms.obj randoms.obj systems.obj
+	$(FD) $^ -OUT:$@
+
+clean:
+	$(RM) *.obj $(OBJS) $(TARGETS) fort.*
+

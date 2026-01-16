@@ -27,7 +27,7 @@ circle001$(EEXT): circle001.f95
 
 atoms.o: atoms.f95
 	$(F95) -c $<
-atoms$(EEXE): atoms.o random.o
+atoms$(EEXE): atoms.o random.o system.o
 	$(F95) $^ -o $@
 
 clean:
