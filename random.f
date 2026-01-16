@@ -1,0 +1,12 @@
+      SUBROUTINE INI_RAN
+        CALL RANDOM_SEED()
+        RETURN
+      END
+C
+      REAL FUNCTION GETRAN(L)
+        IMPLICIT NONE
+	    REAL L,R
+	    CALL RANDOM_NUMBER(R)
+	    GETRAN=R*L-L/2.0
+        RETURN
+      END
